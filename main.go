@@ -8,12 +8,13 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// User model for storing data from database
 type User struct {
-	id        int    `json:"id"`
-	firstName string `json:"firstName"`
-	lastName  string `json:"lastName"`
-	email     string `json:"email"`
-	dateBirth string `json:"dateBirth"`
+	ID        int    `json:"id"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Email     string `json:"email"`
+	DateBirth string `json:"dateBirth"`
 }
 
 func main() {
@@ -51,17 +52,17 @@ func getPeople(dbe *sql.DB) {
 	for get.Next() {
 		var user User
 
-		err = get.Scan(&user.id, &user.firstName, &user.lastName, &user.email, &user.dateBirth)
+		err = get.Scan(&user.ID, &user.FirstName, &user.LastName, &user.Email, &user.DateBirth)
 		if err != nil {
 			panic(err.Error())
 		}
 
-		fmt.Println("id : " + strconv.Itoa(user.id))
-		fmt.Println("FirstName : " + user.firstName)
-		fmt.Println("LastName : " + user.lastName)
-		fmt.Println("Email : " + user.email)
-		fmt.Println("DateBirth : " + user.dateBirth)
-		fmt.Println("---------------------------\n")
+		fmt.Println("id : " + strconv.Itoa(user.ID))
+		fmt.Println("FirstName : " + user.FirstName)
+		fmt.Println("LastName : " + user.LastName)
+		fmt.Println("Email : " + user.Email)
+		fmt.Println("DateBirth : " + user.DateBirth)
+		fmt.Println("---------------------------")
 	}
 }
 
